@@ -22,13 +22,13 @@ const styles = existsSync(stylesPath) ? readFileSync(stylesPath, "utf8") : "";
 const requiredText = [
   "좋은 와인은 사라지지 않고,",
   "기록되고 이어져야 합니다.",
-  "Vinsync는 와인을 다루는 비즈니스가 더 정확하고 간결하게 와인을 기록하고 관리할 수 있도록 돕는 소프트웨어 회사입니다.",
-  "우리는 와인 리스트, 메뉴판, 가격, 빈티지, 재고 정보가 흩어져 관리되는 문제에 주목합니다.",
+  "뱅싱크는 와이너리에서 고객에게 와인이 전해지는 과정에서 흩어지는 정보를 더 정확하고 간결하게 연결하는 회사입니다.",
+  "우리는 와인 리스트, 메뉴판, 가격, 빈티지, 재고 정보가 각기 다른 방식으로 관리되는 문제에 주목합니다.",
   "와인 한 병의 정보가 매장 운영, 고객 경험, 재고 관리까지 자연스럽게 이어지는 구조를 만들고자 합니다.",
-  "Sommelist는 Vinsync의 첫 번째 제품입니다.",
+  "소믈리스트는 뱅싱크의 첫 번째 제품입니다.",
   "와인 정보를 한 번 등록하면 웹 메뉴판과 재고 관리에 함께 반영되어, 매장은 더 적은 반복 업무로 더 정확한 와인 리스트를 운영할 수 있습니다.",
   "와인바, 레스토랑, 호텔, 와인샵을 위한 더 간결한 와인 운영 시스템을 만들고 있습니다.",
-  "Sommelist에서 더 자세히 알아보세요.",
+  "소믈리스트에서 더 자세히 알아보세요.",
 ];
 
 for (const text of requiredText) {
@@ -36,9 +36,12 @@ for (const text of requiredText) {
 }
 
 check("Sommelist link points to production domain", index.includes('href="https://sommelist.kr"'));
-check("logo has meaningful alt text", index.includes('alt="Vinsync"'));
+check("logo has meaningful alt text", index.includes('alt="Vinsync logo"'));
 check("stylesheet linked", index.includes('href="assets/styles.css"'));
 check("sentence line class present", index.includes('class="line"'));
+check("Vinsync and Sommelist sections are separated", index.includes('class="divider"'));
+check("software-company positioning removed", !index.includes("소프트웨어 회사"));
+check("visible English product names removed", !index.includes(">Vinsync") && !index.includes(">Sommelist"));
 check("mobile wrapping rule present", styles.includes("@media") && styles.includes(".line"));
 check("no package.json build setup", !existsSync(join(root, "package.json")));
 check("logo asset is not tiny", existsSync(logoPath) && statSync(logoPath).size > 20000);

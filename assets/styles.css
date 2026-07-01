@@ -62,7 +62,7 @@ body {
   display: grid;
   gap: 0.72rem;
   max-width: 1320px;
-  margin: 0 0 38px;
+  margin: 0;
 }
 
 .line {
@@ -77,6 +77,18 @@ body {
   line-height: 1.82;
   letter-spacing: 0;
   word-break: keep-all;
+}
+
+.divider {
+  width: 72px;
+  height: 1px;
+  margin: 32px 0 30px;
+  border: 0;
+  background: rgba(23, 21, 19, 0.14);
+}
+
+.product-copy {
+  margin-bottom: 38px;
 }
 
 .cta {
